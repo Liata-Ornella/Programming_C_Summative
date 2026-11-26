@@ -1,0 +1,165 @@
+# Process viewing, searching and termination (PID 1016 is a copy of sleep renamed sshd, to test the protected-service rule)
+# (captured from a real run; the main menu is shown only the first time)
+
+===== LINUX SYSTEM HEALTH AND RESOURCE MONITORING MANAGER =====
+ 1. Display system information
+ 2. Monitor CPU utilization
+ 3. Monitor memory utilization
+ 4. Monitor disk utilization
+ 5. View and search running processes
+ 6. Terminate a process
+ 7. Generate a system health report
+ 8. View activity history
+ 9. Clear activity log
+10. Exit
+Enter your choice (1-10): 5
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 1
+Running processes: 73 (showing the top 15 by CPU)
+PID      USER           %CPU    %MEM    COMMAND
+1019     root           14.2    0.1     python3
+101      root           1.0     3.8     claude
+1        root           0.0     0.0     process_api
+21       root           0.0     0.0     migration/1
+32       root           0.0     0.0     kworker/u8:1-events_unbound
+94       root           0.0     0.4     environment-man
+75       root           0.0     0.3     rclone-filestor
+12       root           0.0     0.0     kworker/u8:0-events_unbound
+74       64321          0.0     0.0     7
+41       root           0.0     0.0     kworker/1:1-events
+36       root           0.0     0.0     kcompactd0
+11       root           0.0     0.0     kworker/0:1-virtio_vsock
+15       root           0.0     0.0     rcu_preempt
+2        root           0.0     0.0     kthreadd
+3        root           0.0     0.0     pool_workqueue_release
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 2
+Enter a process name or PID: sleep
+PID      USER           %CPU    %MEM    COMMAND
+1014     root           0.0     0.0     sleep
+1015     root           0.0     0.0     sleep
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 2
+Enter a process name or PID: 1014
+PID      USER           %CPU    %MEM    COMMAND
+1014     root           0.0     0.0     sleep
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 2
+Enter a process name or PID: 999999
+No process found with PID 999999.
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 2
+Enter a process name or PID: 
+Error: the search cannot be empty.
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 2
+Enter a process name or PID: nosuchprocess
+No process found with a name containing "nosuchprocess".
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 9
+Error: invalid choice. Enter 0, 1 or 2.
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 0
+
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: abc
+Error: invalid PID. Enter a positive whole number.
+
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: 0
+Error: invalid PID. Enter a positive whole number.
+
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: 999999
+Error: no process with PID 999999.
+
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: 1
+PID      USER           %CPU    %MEM    COMMAND
+1        root           0.0     0.0     process_api
+Refused: this process cannot be terminated because it is a core system process (PID 1).
+
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: 1020
+PID      USER           %CPU    %MEM    COMMAND
+1020     root           0.7     0.0     health_monitor.
+Refused: this process cannot be terminated because it is this script or the shell that started it.
+
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: 1019
+PID      USER           %CPU    %MEM    COMMAND
+1019     root           2.0     0.1     python3
+Refused: this process cannot be terminated because it is this script or the shell that started it.
+
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: 1016
+PID      USER           %CPU    %MEM    COMMAND
+1016     root           0.0     0.0     sshd
+Refused: this process cannot be terminated because "sshd" is a protected system service.
+
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: 1015
+PID      USER           %CPU    %MEM    COMMAND
+1015     root           0.0     0.0     sleep
+Terminate sleep (PID 1015)? (y/n): maybe
+Please answer y or n.
+Terminate sleep (PID 1015)? (y/n): n
+Cancelled. The process was not terminated.
+
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: 1014
+PID      USER           %CPU    %MEM    COMMAND
+1014     root           0.0     0.0     sleep
+Terminate sleep (PID 1014)? (y/n): y
+Process sleep (PID 1014) was terminated.
+
+Enter your choice (1-10): 5
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 2
+Enter a process name or PID: 1014
+No process found with PID 1014.
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 0
+
+Enter your choice (1-10): 10
+Goodbye.

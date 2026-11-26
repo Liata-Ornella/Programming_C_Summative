@@ -1,0 +1,8 @@
+===== DOCUMENT ANALYSIS REPORT =====
+Input file          : document1.txt
+Search keyword      : IOT
+Total lines         : 6
+Total occurrences   : 6
+Matching lines      : 4
+Matching line numbers: 1, 3, 4, 6
+Status              : Success

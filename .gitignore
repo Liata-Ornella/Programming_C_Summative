@@ -1,0 +1,11 @@
+# compiled programs
+student_system
+sales_system
+document_analyzer
+
+# files created while demonstrating
+*.bak
+activity.log
+
+# Do not track presentation helper scripts
+**/*[Dd][Ee][Mm][Oo]*[Ss][Cc][Rr][Ii][Pp][Tt]*

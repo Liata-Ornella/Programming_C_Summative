@@ -1,0 +1,19 @@
+2026-11-22 19:13:25 [INFO] Application started
+2026-11-22 19:13:25 [INFO] System information displayed
+2026-11-22 19:13:27 [INFO] CPU usage 0.0% (threshold 80%)
+2026-11-22 19:13:28 [INFO] Memory utilization 6.2% (threshold 5%)
+2026-11-22 19:13:28 [WARNING] Memory utilization 6.2% exceeds threshold 5%
+2026-11-22 19:13:28 [INFO] Disk check done (threshold 80%)
+2026-11-22 19:13:28 [WARNING] Filesystems at or above 80%: /opt/claude-code (93% used)
+2026-11-22 19:13:28 [INFO] Running processes displayed (71 in total)
+2026-11-22 19:13:28 [INFO] Process search "sleep": 1 match(es)
+2026-11-22 19:13:28 [INFO] Process search "829": 1 match(es)
+2026-11-22 19:13:30 [INFO] Terminated process sleep (PID 829)
+2026-11-22 19:13:31 [INFO] CPU usage 0.0% (threshold 80%)
+2026-11-22 19:13:31 [INFO] Memory utilization 6.2% (threshold 5%)
+2026-11-22 19:13:31 [WARNING] Memory utilization 6.2% exceeds threshold 5%
+2026-11-22 19:13:31 [INFO] Disk check done (threshold 80%)
+2026-11-22 19:13:31 [WARNING] Filesystems at or above 80%: /opt/claude-code (93% used)
+2026-11-22 19:13:31 [INFO] Health report generated: evidence/health_report_20261122_191330.txt
+2026-11-22 19:13:31 [INFO] Activity log viewed
+2026-11-22 19:13:31 [INFO] Application exited

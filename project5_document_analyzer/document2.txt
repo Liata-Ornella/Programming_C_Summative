@@ -1,0 +1,4 @@
+Embedded systems run on small microcontrollers.
+Arduino boards are popular for prototyping.
+Nothing in this file mentions the keyword we are searching for.
+Linux is widely used in servers and devices.

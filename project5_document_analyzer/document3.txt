@@ -1,0 +1,5 @@
+Smart homes use IoT lamps and IoT thermostats.
+Industrial IoT improves monitoring in factories.
+
+Edge computing reduces latency for IoT applications.
+Last line without a trailing newline mentions IoT

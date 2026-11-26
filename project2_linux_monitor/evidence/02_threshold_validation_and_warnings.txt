@@ -1,0 +1,75 @@
+# Threshold validation and CPU / memory / disk warnings (one CPU-heavy process running; thresholds lowered to trigger warnings)
+# (captured from a real run; the main menu is shown only the first time)
+
+===== LINUX SYSTEM HEALTH AND RESOURCE MONITORING MANAGER =====
+ 1. Display system information
+ 2. Monitor CPU utilization
+ 3. Monitor memory utilization
+ 4. Monitor disk utilization
+ 5. View and search running processes
+ 6. Terminate a process
+ 7. Generate a system health report
+ 8. View activity history
+ 9. Clear activity log
+10. Exit
+Enter your choice (1-10): 2
+Enter CPU threshold in % (1-100) [current 80, Enter to keep]: abc
+Error: enter a whole number from 1 to 100.
+Enter CPU threshold in % (1-100) [current 80, Enter to keep]: 0
+Error: enter a whole number from 1 to 100.
+Enter CPU threshold in % (1-100) [current 80, Enter to keep]: 101
+Error: enter a whole number from 1 to 100.
+Enter CPU threshold in % (1-100) [current 80, Enter to keep]: 1000
+Error: enter a whole number from 1 to 100.
+Enter CPU threshold in % (1-100) [current 80, Enter to keep]: -5
+Error: enter a whole number from 1 to 100.
+Enter CPU threshold in % (1-100) [current 80, Enter to keep]: 5.5
+Error: enter a whole number from 1 to 100.
+Enter CPU threshold in % (1-100) [current 80, Enter to keep]: 5
+Measuring CPU usage (about 2 seconds)...
+
+===== CPU UTILIZATION =====
+CPU cores    : 2
+Load average : 0.23 0.14 0.06  (1, 5, 15 minutes)
+CPU usage    : 51.2%
+WARNING      : CPU usage is above the 5% threshold!
+
+Top 5 processes by CPU usage:
+PID      USER           %CPU    %MEM    COMMAND
+1544     root           100.0   0.0     yes
+101      root           1.0     3.8     claude
+1        root           0.0     0.1     process_api
+2        root           0.0     0.0     kthreadd
+3        root           0.0     0.0     pool_workqueue_release
+
+WARNING: processes using more than 5% CPU:
+PID      USER           %CPU    %MEM    COMMAND
+1544     root           100.0   0.0     yes
+
+Enter your choice (1-10): 3
+Enter memory threshold in % (1-100) [current 80, Enter to keep]: 1
+
+===== MEMORY UTILIZATION =====
+Total memory     : 8024 MB
+Used memory      : 488 MB
+Available memory : 7536 MB
+Utilization      : 6.1%
+WARNING      : Memory utilization is above the 1% threshold!
+
+Enter your choice (1-10): 4
+Enter disk threshold in % (1-100) [current 80, Enter to keep]: 1
+
+===== DISK UTILIZATION =====
+Filesystem                                                         Size  Used Avail Use% Mounted on
+/dev/vda                                                           252G   13G   31G  29% /
+/dev/vdc                                                           397M  362M   28M  93% /opt/claude-code
+/dev/vdd                                                            49M   32M   16M  68% /opt/env-runner
+rclone-filestore:cse_015YA3PqkcWy1NogScoptHdQ:/mnt/attach/outputs  1.0P     0  1.0P   0% /mnt/attach/outputs
+
+WARNING: filesystems at or above the 1% threshold:
+  / (29% used)
+  /opt/claude-code (93% used)
+  /opt/env-runner (68% used)
+
+Enter your choice (1-10): 10
+Goodbye.

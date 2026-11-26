@@ -1,0 +1,27 @@
+===== SYSTEM HEALTH REPORT =====
+Generated  : 2026-11-22 19:13:30
+Hostname   : vm
+Uptime     : up 6 minutes
+
+===== CPU UTILIZATION =====
+CPU cores    : 2
+Load average : 0.11 0.09 0.03  (1, 5, 15 minutes)
+CPU usage    : 0.0%
+Status       : OK (not above the 80% threshold)
+
+===== MEMORY UTILIZATION =====
+Total memory     : 8024 MB
+Used memory      : 500 MB
+Available memory : 7524 MB
+Utilization      : 6.2%
+WARNING      : Memory utilization is above the 5% threshold!
+
+===== DISK UTILIZATION =====
+Filesystem                                                         Size  Used Avail Use% Mounted on
+/dev/vda                                                           252G   13G   31G  29% /
+/dev/vdc                                                           397M  362M   28M  93% /opt/claude-code
+/dev/vdd                                                            49M   32M   16M  68% /opt/env-runner
+rclone-filestore:cse_015YA3PqkcWy1NogScoptHdQ:/mnt/attach/outputs  1.0P     0  1.0P   0% /mnt/attach/outputs
+
+WARNING: filesystems at or above the 80% threshold:
+  /opt/claude-code (93% used)

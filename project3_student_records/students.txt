@@ -1,0 +1,17 @@
+6
+102|Brian|Mugisha|Computer Science|1|2
+CS101|Programming in C|38|100
+MTH101|Calculus|55|100
+101|Alice|Uwase|Computer Science|2|3
+CS101|Programming in C|85|100
+CS102|Linux Administration|72|100
+MTH101|Calculus|45|100
+103|Chantal|Ingabire|Software Engineering|3|2
+CS101|Programming in C|91|100
+SE201|Algorithms|40|50
+105|Eve|Mukamana|Software Engineering|1|1
+8888|Liabilty stuff|400|800
+1200|Lalita|Ornella|Web App dev|4|1
+5999|WEB App Dev|600|700
+7000|Lemon|ginger|programming in c|4|1
+8000|programming in c|650|900

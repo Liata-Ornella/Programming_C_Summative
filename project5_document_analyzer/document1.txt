@@ -1,0 +1,6 @@
+The Internet of Things (IoT) connects everyday devices to the network.
+Sensors collect data and send it to a gateway.
+An IoT gateway forwards the data to the cloud.
+Security is a major concern for iot deployments.
+This line has no match at all.
+IoT, IOT and iOt all count as matches, giving three on this line.

@@ -1,0 +1,188 @@
+# Error handling and permissions - four separate runs
+# (captured from real runs on an Ubuntu 24.04 test machine)
+
+################################################################
+# A. Invalid input, report-directory errors and log handling (run as root)
+# (captured from a real run; the main menu is shown only the first time)
+
+===== LINUX SYSTEM HEALTH AND RESOURCE MONITORING MANAGER =====
+ 1. Display system information
+ 2. Monitor CPU utilization
+ 3. Monitor memory utilization
+ 4. Monitor disk utilization
+ 5. View and search running processes
+ 6. Terminate a process
+ 7. Generate a system health report
+ 8. View activity history
+ 9. Clear activity log
+10. Exit
+Enter your choice (1-10): abc
+Error: invalid choice. Enter a number from 1 to 10.
+
+Enter your choice (1-10): 0
+Error: invalid choice. Enter a number from 1 to 10.
+
+Enter your choice (1-10): 11
+Error: invalid choice. Enter a number from 1 to 10.
+
+Enter your choice (1-10): -1
+Error: invalid choice. Enter a number from 1 to 10.
+
+Enter your choice (1-10): 
+Error: invalid choice. Enter a number from 1 to 10.
+
+Enter your choice (1-10): 99999999999
+Error: invalid choice. Enter a number from 1 to 10.
+
+Enter your choice (1-10): 1
+===== SYSTEM INFORMATION =====
+Hostname       : vm
+Operating sys. : Ubuntu 24.04.5 LTS
+Kernel version : 6.18.44-fc-v726
+Uptime         : up 7 minutes
+Date and time  : 2026-11-22 19:13:39
+
+Enter your choice (1-10): 7
+Directory to save the report in [Enter for the current directory]: /home/claude/C_summative/project2_linux_monitor/evidence_tmp_missing
+Directory '/home/claude/C_summative/project2_linux_monitor/evidence_tmp_missing' does not exist. Create it (y/n): n
+Report cancelled.
+
+Enter your choice (1-10): 7
+Directory to save the report in [Enter for the current directory]: /home/claude/C_summative/project2_linux_monitor/health_monitor.sh
+Error: '/home/claude/C_summative/project2_linux_monitor/health_monitor.sh' is not a directory.
+
+Enter your choice (1-10): 7
+Directory to save the report in [Enter for the current directory]: ~/p2_demo_reports
+Directory '/root/p2_demo_reports' does not exist. Create it (y/n): y
+Collecting data (about 2 seconds)...
+Report saved to: /root/p2_demo_reports/health_report_20261122_191340.txt
+
+Enter your choice (1-10): 8
+===== ACTIVITY LOG (/tmp/claude-0/-home-claude/20cda4b4-85f7-5b26-91a4-9e5570b9e325/scratchpad/p2/e4a.log) =====
+Entries: 9
+2026-11-22 19:13:39 [INFO] Application started
+2026-11-22 19:13:39 [INFO] System information displayed
+2026-11-22 19:13:39 [INFO] Report cancelled (directory '/home/claude/C_summative/project2_linux_monitor/evidence_tmp_missing' missing)
+2026-11-22 19:13:39 [ERROR] Report: '/home/claude/C_summative/project2_linux_monitor/health_monitor.sh' is not a directory
+2026-11-22 19:13:41 [INFO] CPU usage 0.0% (threshold 80%)
+2026-11-22 19:13:41 [INFO] Memory utilization 6.1% (threshold 80%)
+2026-11-22 19:13:41 [INFO] Disk check done (threshold 80%)
+2026-11-22 19:13:41 [WARNING] Filesystems at or above 80%: /opt/claude-code (93% used)
+2026-11-22 19:13:41 [INFO] Health report generated: /root/p2_demo_reports/health_report_20261122_191340.txt
+
+Enter your choice (1-10): 9
+This permanently deletes all activity log entries. Continue (y/n): maybe
+Please answer y or n.
+This permanently deletes all activity log entries. Continue (y/n): n
+Cancelled. The log was not cleared.
+
+Enter your choice (1-10): 9
+This permanently deletes all activity log entries. Continue (y/n): y
+Activity log cleared.
+
+Enter your choice (1-10): 8
+===== ACTIVITY LOG (/tmp/claude-0/-home-claude/20cda4b4-85f7-5b26-91a4-9e5570b9e325/scratchpad/p2/e4a.log) =====
+Entries: 1
+2026-11-22 19:13:41 [INFO] Activity log cleared by the user
+
+Enter your choice (1-10): 9
+This permanently deletes all activity log entries. Continue (y/n): n
+Cancelled. The log was not cleared.
+
+Enter your choice (1-10): 10
+Goodbye.
+
+################################################################
+# B. Insufficient permissions (run as the unprivileged user 'nobody'; PID 1201 is owned by root)
+# (captured from a real run; the main menu is shown only the first time)
+
+===== LINUX SYSTEM HEALTH AND RESOURCE MONITORING MANAGER =====
+ 1. Display system information
+ 2. Monitor CPU utilization
+ 3. Monitor memory utilization
+ 4. Monitor disk utilization
+ 5. View and search running processes
+ 6. Terminate a process
+ 7. Generate a system health report
+ 8. View activity history
+ 9. Clear activity log
+10. Exit
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: 1201
+PID      USER           %CPU    %MEM    COMMAND
+1201     root           0.0     0.0     sleep
+Error: you do not have permission to terminate PID 1201.
+
+Enter your choice (1-10): 7
+Directory to save the report in [Enter for the current directory]: /root
+Error: you do not have permission to write in '/root'.
+
+Enter your choice (1-10): 7
+Directory to save the report in [Enter for the current directory]: /root/newdir
+Directory '/root/newdir' does not exist. Create it (y/n): y
+Error: cannot create the directory '/root/newdir' (permission denied?).
+
+Enter your choice (1-10): 10
+Goodbye.
+
+################################################################
+# C. Missing utilities (free, df and top removed from PATH)
+# (captured from a real run; the main menu is shown only the first time)
+
+===== LINUX SYSTEM HEALTH AND RESOURCE MONITORING MANAGER =====
+ 1. Display system information
+ 2. Monitor CPU utilization
+ 3. Monitor memory utilization
+ 4. Monitor disk utilization
+ 5. View and search running processes
+ 6. Terminate a process
+ 7. Generate a system health report
+ 8. View activity history
+ 9. Clear activity log
+10. Exit
+Enter your choice (1-10): 3
+Error: required command(s) not available: free
+
+Enter your choice (1-10): 4
+Error: required command(s) not available: df
+
+Enter your choice (1-10): 7
+Error: required command(s) not available: df free
+
+Enter your choice (1-10): 2
+Enter CPU threshold in % (1-100) [current 80, Enter to keep]: 
+Measuring CPU usage (about 2 seconds)...
+
+===== CPU UTILIZATION =====
+CPU cores    : 2
+Load average : 0.24 0.12 0.04  (1, 5, 15 minutes)
+CPU usage    : 0.0%
+Status       : OK (not above the 80% threshold)
+
+Top 5 processes by CPU usage:
+PID      USER           %CPU    %MEM    COMMAND
+101      root           1.0     3.7     claude
+1229     root           0.7     0.1     python3
+1        root           0.0     0.0     process_api
+21       root           0.0     0.0     migration/1
+32       root           0.0     0.0     kworker/u8:1-events_unbound
+
+No process is using more than 80% CPU.
+
+Enter your choice (1-10): 10
+Goodbye.
+
+################################################################
+# D. The activity log cannot be written at start-up
+
+$ HEALTH_MONITOR_LOG=/nonexistent_dir/activity.log ./health_monitor.sh
+Error: cannot write to the activity log: /nonexistent_dir/activity.log
+Set HEALTH_MONITOR_LOG to a writable file and run the script again.
+exit status: 1
+
+# E. Input closed (Ctrl+D) at the menu - the program exits cleanly and logs it
+
+$ ./health_monitor.sh < /dev/null
+Enter your choice (1-10): 
+Input closed. Exiting.
+exit status: 0

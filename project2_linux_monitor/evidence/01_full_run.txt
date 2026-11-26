@@ -1,0 +1,149 @@
+# Full run: system info, CPU, memory (threshold 5%), disk, processes, terminate, report, activity log
+# (captured from a real run; the main menu is shown only the first time)
+
+===== LINUX SYSTEM HEALTH AND RESOURCE MONITORING MANAGER =====
+ 1. Display system information
+ 2. Monitor CPU utilization
+ 3. Monitor memory utilization
+ 4. Monitor disk utilization
+ 5. View and search running processes
+ 6. Terminate a process
+ 7. Generate a system health report
+ 8. View activity history
+ 9. Clear activity log
+10. Exit
+Enter your choice (1-10): 1
+===== SYSTEM INFORMATION =====
+Hostname       : vm
+Operating sys. : Ubuntu 24.04.5 LTS
+Kernel version : 6.18.44-fc-v726
+Uptime         : up 6 minutes
+Date and time  : 2026-11-22 19:13:25
+
+Enter your choice (1-10): 2
+Enter CPU threshold in % (1-100) [current 80, Enter to keep]: 
+Measuring CPU usage (about 2 seconds)...
+
+===== CPU UTILIZATION =====
+CPU cores    : 2
+Load average : 0.12 0.09 0.03  (1, 5, 15 minutes)
+CPU usage    : 0.0%
+Status       : OK (not above the 80% threshold)
+
+Top 5 processes by CPU usage:
+PID      USER           %CPU    %MEM    COMMAND
+1        root           0.0     0.1     process_api
+2        root           0.0     0.0     kthreadd
+3        root           0.0     0.0     pool_workqueue_release
+4        root           0.0     0.0     kworker/R-rcu_gp
+5        root           0.0     0.0     kworker/R-sync_wq
+
+No process is using more than 80% CPU.
+
+Enter your choice (1-10): 3
+Enter memory threshold in % (1-100) [current 80, Enter to keep]: 5
+
+===== MEMORY UTILIZATION =====
+Total memory     : 8024 MB
+Used memory      : 499 MB
+Available memory : 7525 MB
+Utilization      : 6.2%
+WARNING      : Memory utilization is above the 5% threshold!
+
+Enter your choice (1-10): 4
+Enter disk threshold in % (1-100) [current 80, Enter to keep]: 
+
+===== DISK UTILIZATION =====
+Filesystem                                                         Size  Used Avail Use% Mounted on
+/dev/vda                                                           252G   13G   31G  29% /
+/dev/vdc                                                           397M  362M   28M  93% /opt/claude-code
+/dev/vdd                                                            49M   32M   16M  68% /opt/env-runner
+rclone-filestore:cse_015YA3PqkcWy1NogScoptHdQ:/mnt/attach/outputs  1.0P     0  1.0P   0% /mnt/attach/outputs
+
+WARNING: filesystems at or above the 80% threshold:
+  /opt/claude-code (93% used)
+
+Enter your choice (1-10): 5
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 1
+Running processes: 71 (showing the top 15 by CPU)
+PID      USER           %CPU    %MEM    COMMAND
+101      root           1.0     3.9     claude
+832      root           0.7     0.1     python3
+1        root           0.0     0.0     process_api
+21       root           0.0     0.0     migration/1
+32       root           0.0     0.0     kworker/u8:1-events_unbound
+94       root           0.0     0.4     environment-man
+75       root           0.0     0.3     rclone-filestor
+12       root           0.0     0.0     kworker/u8:0-events_unbound
+74       64321          0.0     0.0     7
+41       root           0.0     0.0     kworker/1:1-events
+36       root           0.0     0.0     kcompactd0
+11       root           0.0     0.0     kworker/0:1-events
+15       root           0.0     0.0     rcu_preempt
+2        root           0.0     0.0     kthreadd
+3        root           0.0     0.0     pool_workqueue_release
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 2
+Enter a process name or PID: sleep
+PID      USER           %CPU    %MEM    COMMAND
+829      root           0.0     0.0     sleep
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 2
+Enter a process name or PID: 829
+PID      USER           %CPU    %MEM    COMMAND
+829      root           0.0     0.0     sleep
+
+--- View and search processes ---
+1. Display running processes (top 15 by CPU)
+2. Search for a process by name or PID
+0. Back to the main menu
+Choose an option: 0
+
+Enter your choice (1-10): 6
+Enter the PID of the process to terminate: 829
+PID      USER           %CPU    %MEM    COMMAND
+829      root           0.0     0.0     sleep
+Terminate sleep (PID 829)? (y/n): y
+Process sleep (PID 829) was terminated.
+
+Enter your choice (1-10): 7
+Directory to save the report in [Enter for the current directory]: evidence
+Collecting data (about 2 seconds)...
+Report saved to: evidence/health_report_20261122_191330.txt
+
+Enter your choice (1-10): 8
+===== ACTIVITY LOG (/home/claude/C_summative/project2_linux_monitor/evidence/sample_activity.log) =====
+Entries: 17
+2026-11-22 19:13:25 [INFO] Application started
+2026-11-22 19:13:25 [INFO] System information displayed
+2026-11-22 19:13:27 [INFO] CPU usage 0.0% (threshold 80%)
+2026-11-22 19:13:28 [INFO] Memory utilization 6.2% (threshold 5%)
+2026-11-22 19:13:28 [WARNING] Memory utilization 6.2% exceeds threshold 5%
+2026-11-22 19:13:28 [INFO] Disk check done (threshold 80%)
+2026-11-22 19:13:28 [WARNING] Filesystems at or above 80%: /opt/claude-code (93% used)
+2026-11-22 19:13:28 [INFO] Running processes displayed (71 in total)
+2026-11-22 19:13:28 [INFO] Process search "sleep": 1 match(es)
+2026-11-22 19:13:28 [INFO] Process search "829": 1 match(es)
+2026-11-22 19:13:30 [INFO] Terminated process sleep (PID 829)
+2026-11-22 19:13:31 [INFO] CPU usage 0.0% (threshold 80%)
+2026-11-22 19:13:31 [INFO] Memory utilization 6.2% (threshold 5%)
+2026-11-22 19:13:31 [WARNING] Memory utilization 6.2% exceeds threshold 5%
+2026-11-22 19:13:31 [INFO] Disk check done (threshold 80%)
+2026-11-22 19:13:31 [WARNING] Filesystems at or above 80%: /opt/claude-code (93% used)
+2026-11-22 19:13:31 [INFO] Health report generated: evidence/health_report_20261122_191330.txt
+
+Enter your choice (1-10): 10
+Goodbye.
